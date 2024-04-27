@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reviews.css">
+    <title>feedback</title>
+</head>
+<body>
+    <div class="app">
+        <div class="rating">
+            <div class="rating-average">
+                <h1>4.7</h1>
+                <div class="star-outer">
+                    <div class="star-inner">
+                    </div>
+                    <p>290,291</p>
+                </div>
+            </div>
+            <div class="rating-progress">
+            </div>
+        </div>
+        <div class="feedback-container">
+            <div class="comments">
+                <div class="person 1">
+                    <div class="img">
+                        <img src="img/download.jpg">
+                    </div>
+                    <div class="info">
+                        <div class="name">
+                            Hagar
+                        </div>
+                        <div class="rate">
+                            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                            <div class="date">1 months ago</div>
+                        </div>
+                        <div class="feedback">
+                            I have previous programming knowledge so the course was very good for me
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="comments">
+                <div class="person 2">
+                    <div class="img">
+                        <img src="img/pic.jpg">
+                    </div>
+                    <div class="info">
+                        <div class="name">
+                            Hania
+                        </div>
+                        <div class="rate">
+                            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                            <div class="date">4 months ago</div>
+                        </div>
+                        <div class="feedback">
+                            EH elhalawa de ya alby
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="comments">
+                <div class="person 3">
+                    <div class="img">
+                        <img src="img/pic2.jpg">
+                    </div>
+                    <div class="info">
+                        <div class="name">
+                            Nada
+                        </div>
+                        <div class="rate">
+                            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                            <div class="date">9 months ago</div>
+                        </div>
+                        <div class="feedback">
+                            tohfaaaa begad thanks eng hannah
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="comments">
+                <div class="person 4">
+                    <div class="img">
+                        <img src="img/pic3.jpg">
+                    </div>
+                    <div class="info">
+                        <div class="name">
+                            Yara
+                        </div>
+                        <div class="rate">
+                            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                            <div class="date">3 months ago</div>
+                        </div>
+                        <div class="feedback">
+                            GAMED MA SHAA ALLAH 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="comments">
+                <div class="person 4">
+                    <div class="img">
+                        <img src="img/pic4.png">
+                    </div>
+                    <div class="info">
+                        <div class="name">
+                            Mohannad
+                        </div>
+                        <div class="rate">
+                            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                            <div class="date">5 months ago</div>
+                        </div>
+                        <div class="feedback">
+                            3ASH BELTAWFEK 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let data = [
+            {
+                'star': 5 ,
+                'count':199980,
+            },
+            {
+                'star': 4 ,
+                'count': 39300,
+            },
+            {
+                'star': 3 ,
+                'count': 25050,
+            },
+            {
+                'star': 2 ,
+                'count': 10070,
+            },
+            {
+                'star': 1,
+                'count': 5020,
+            }
+        ];
+
+        let total_rating = 0,
+        rating_based_on_stars =0;
+
+        data.forEach(rating =>{
+            total_rating += rating.count;
+            rating_based_on_stars +=rating.count * rating.star;
+
+        });
+        data.forEach(rating =>{
+            let wv=(rating.count/total_rating)*100;
+            let rating_progress=
+            `<div class="rating-progress-value">
+                    <p>
+                        ${rating.star}
+                        <span class="star" >
+                            &#9733;
+                        </span>
+                    </p>
+                    <div class="progress">
+                        <div class="bar" style="width:${wv}%"></div>
+                    </div>
+                    <p>${rating.count.toLocaleString()}</p>
+            </div>`;
+            document.querySelector('.rating-progress').innerHTML += rating_progress;
+        });
+        let rating_average = (rating_based_on_stars / total_rating ).toFixed(1);
+        document.querySelector('.rating-average h1').innerHTML = rating_average ;
+        document.querySelector('.rating-average p').innerHTML = total_rating.toLocaleString();
+        document.querySelector('.rating-average .star-inner ').style.width= ( rating_average/5 )*100 +"%";
+    </script>
+</body>
+</html>
